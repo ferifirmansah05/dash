@@ -1,10 +1,9 @@
-from flask import Flask
+import dash
+from dash import html
 
-app = Flask(__name__)
+app = dash.Dash(__name__)
+server = app.server  # required for Vercel
 
-@app.route("/")
-def hello():
-    return "Hello from Flask on Vercel!"
-
-# expose app for Vercel
-# Vercel looks for 'app' in the file
+app.layout = html.Div([
+    html.H1("Hello from Dash on Vercel!")
+])
